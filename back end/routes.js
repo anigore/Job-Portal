@@ -10,16 +10,16 @@ var loginSession = require('./controller/loginSession')
 var getCandidateData = require('./controller/getCandidate')
 
 
-router.post('/login/', authLogin);     //for checking valid user
-router.post('/uniqueEmail/', uniqueEmail); // for email validation
+router.post('/jobportal/login/', authLogin);     //for checking valid user
+router.post('/jobportal/uniqueEmail/', uniqueEmail); // for email validation
 router.post('/jobportal/person/', persons.create);   //for adding data
 router.post('/jobportal/state/', states.create); //to add new states into database
 router.get('/jobportal/state/', states.getAll); //to get all states from database
-router.post('/username/', username); //for username validation
+router.post('/jobportal/username/', username); //for username validation
 router.post('/jobportal/emailsender/', persons.emailSender); //for sending mail
 router.post('/jobportal/updatePassword/', persons.updatePassword);//for update password
 router.post('/jobportal/uploadPiture/', persons.uploadPiture);
 //router.get('/loginSession/', loginSession);
-router.get('/getCandidateData/:username', getCandidateData);
+router.get('/jobportal/getCandidateData/:username', getCandidateData);
 
 module.exports = router;

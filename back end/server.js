@@ -57,7 +57,7 @@ next();
 
 });
 
-//app.all('/myapi/*',[require('./middlewares/validateRequest')]);
+//app.all('/jobportal/*',[require('./middleware/validateRequest')]);
 app.use('/',require('./routes'));
 
 

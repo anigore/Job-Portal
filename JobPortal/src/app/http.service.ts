@@ -12,13 +12,13 @@ export class HttpService {
 
   createUrl = "http://localhost:3000/jobportal/person/"
    stateListUrl = 'http://localhost:3000/jobportal/state/';
-  emailCheck = "http://localhost:3000/uniqueEmail/";
-  usernameCheck = "http://localhost:3000/username/";
-  loginUrl = "http://localhost:3000/login/"
+  emailCheck = "http://localhost:3000/jobportal/uniqueEmail/";
+  usernameCheck = "http://localhost:3000/jobportal/username/";
+  loginUrl = "http://localhost:3000/jobportal/login/"
   emailSendUrl = "http://localhost:3000/jobportal/emailsender/";
   forgotPasswordUrl = "http://localhost:3000/jobportal/updatePassword/"
   fileUploadurl = "http://localhost:3000/jobportal/uploadPiture/"
-  fetchDataUrl = "http://localhost:3000/getCandidateData"
+  fetchDataUrl = "http://localhost:3000/jobportal/getCandidateData"
 
   creatCandidate(data)
   {
@@ -56,18 +56,33 @@ export class HttpService {
   {
   return this.http.post<any>(this.forgotPasswordUrl, data);
   }
+
+  setToken(token){
+    localStorage.setItem("loginUser",token);
+  }
+  
+  getToken()
+  {
+    return localStorage.getItem("loginUser");
+  }
+  isloggedIn()
+  {
+    return this.getToken() !== null;
+  }
+
+
   
   private loggedInstatus = false;
   setLoggedIn(value : boolean){
     this.loggedInstatus = value
   }
 
-  get isLoggedIn(){
-    return this.loggedInstatus
-  }
-  logout( value : boolean) {
-    this.loggedInstatus = value
+  //  get isLoggedIn(){
 
+  //    return this.loggedInstatus
+  //  }
+  logout() {
+    localStorage.removeItem("loginUser")
   }
 
     public uploadImage(image: File) {

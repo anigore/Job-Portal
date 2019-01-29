@@ -11,6 +11,10 @@ var demo;
 
 
 var persons = {
+
+ 
+
+
   show: function (req, res) {
     res.status(200).json({ status: 'success', message: 'Success' });
   },
@@ -23,7 +27,8 @@ var persons = {
     person.lastName = req.body.lastName;
     person.dateOfBirth = req.body.dateOfBirth;
     person.gender = req.body.gender;
-    person.hobbies = req.body.hobbies;
+    hobbiesArray = getHobbies(req.body.hobbies)
+    person.hobbies = this.hobbiesArray;
     person.phoneNumber = req.body.phoneNumber;
     person.address = req.body.address;
     person.city = req.body.city;
@@ -139,9 +144,12 @@ var persons = {
 
     });
   }
+}
 
-
-
-
+getHobbies = function (hobbiesData){
+  result = hobbiesData.filter(word => word !== true) 
+  hobbiesArray = result.filter(word => word !== false)
+  
+  return hobbiesArray;
 }
 module.exports = persons;

@@ -10,7 +10,7 @@ import { EmailSenderComponent } from './email-sender/email-sender.component';
 const routes : Routes=[
   {path:'registration' , component : RegistrationFormComponent},
   {path:'login',component:LoginPageComponent},
-  {path:'dashboard/:username' , component : DashboardComponent,canActivate:[AuthGuard]},
+  {path:'dashboard' , component : DashboardComponent,canActivate:[AuthGuard]},
   {path:'forgotPassword/:email',component:ForrgotPasswordComponent},
   {path:'emailSender',component:EmailSenderComponent},
   {path:'',redirectTo:'login',pathMatch:'full'}

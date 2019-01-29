@@ -221,6 +221,7 @@ export class RegistrationFormComponent implements OnInit {
   
   onClick() {
     const selectedPreferences = this.candidateForm.value.hobbies
+    
     .map((checked, index) => checked ? this.hobbies[index].hobbie : null)
     .filter(value => value !== null);
  

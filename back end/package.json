@@ -15,6 +15,7 @@
     "cryptr": "^4.0.2",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "jwt-simple": "^0.5.5",
     "mail": "^0.2.3",
     "mongoose": "^5.4.3",
     "multer": "^1.4.1",

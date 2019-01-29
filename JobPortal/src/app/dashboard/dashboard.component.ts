@@ -15,18 +15,18 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router,public service: HttpService,private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.username = this.route.snapshot.paramMap.get("username")
-    console.log("my username", this.username);
     this.getUsername()
   }
 
   logout(): void {
     console.log("Logout");
-   this.service.logout(false);
+   this.service.logout();
+   
     this.router.navigate(['/login']);
   }
 
   getUsername(){
+    this.username = this.service.getToken();
     this.service.getCandidateData(this.username).subscribe((res : any) =>{
       this.fetchedData = res.docs
       console.log("data - ",this.fetchedData)

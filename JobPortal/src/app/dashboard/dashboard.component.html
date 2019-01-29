@@ -1,78 +1,104 @@
+
 <div class="col-md-8 mx-auto">
-    <div class="card border">
-      <div class="card-header">
-        <h3 class="panel-title text-center">Welcome To Job Portal</h3>
+    <div class="card border" >
+      <div class="card-header" >
+        <h3 class="panel-title text-center" style="color:rgb(15, 99, 102)">Welcome To Job Portal</h3>
+        <button type="submit" class="btn btn-light" (click)="logout()">Logout</button>
       </div>
       <div class="card-body">
   
 
-    <section class="card">
-      <div id="image-container">
+    <section>
+      <div>
           <div style=" text-align: center">
-              <h3 style="color:rgba(83, 82, 80, 0.925)"> <label ><b>Hello </b></label>
-               {{fetchedData.username}}</h3>
-             </div>
-        <img src="http://localhost:3000/{{fetchedData.photo}}">
-       
+              <h1 style="color:rgba(6, 54, 83, 0.973); font-family:initial"> <label ><b>Hello </b></label>
+               {{fetchedData.username}}</h1>
+               <img class="rounded-circle  border border-primary border-5" style="width:200px;height:180px; " src="http://localhost:3000/{{fetchedData.photo}}">
+      </div>
        
       </div>
-      <div class="offset-md-1">
+     <div style="margin-left:25%;margin-right:0%;">
+        <table class="table table-borderless ">
+            
+              <tbody>
+                  <tr>
+                      <td><b>Name : </b></td>
+                      <td>:</td>
+                      <td>{{fetchedData.firstName}} {{fetchedData.lastName}}</td>
+                    </tr>
+              </tbody>
 
-          <div>
-              <label><b>Name : </b></label>
-              {{fetchedData.firstName}} {{fetchedData.lastName}}
-            </div>
-      
-            <div>
-              <label><b>Date Of Birth : </b></label>
-              {{fetchedData.dateOfBirth | date:'shortDate'}}
-            </div>
-      
-            <div>
-              <label><b>Gender : </b></label>
-              {{fetchedData.gender}}
-            </div>
-      
-            <div>
-                <label><b>Hobbies : </b></label>
-                {{fetchedData.hobbies}}
-              </div>
-      
-            <div>
-              <label><b>Phone Number : </b></label>
-              {{fetchedData.phoneNumber}}
-            </div>
-      
-            <div>
-              <label><b>Address : </b></label>
-              {{fetchedData.adress}}
-            </div>
-      
-            <div>
-              <label><b>City : </b></label>
-              {{fetchedData.city}}
-            </div>
-      
-            <div >
-                <label><b>State : </b></label>
-                {{fetchedData.state}}
-              </div>
-      
-            <div>
-              <label><b>Zipcode : </b></label>
-              {{fetchedData.zipcode}}
-            </div>
-      
-            <div >
-                <label><b>Email : </b></label>
-                {{fetchedData.email}}
-              </div>
+              <tbody>
+                  <tr>
+                      <td><b>Date Of Birth  </b></td>
+                      <td>:</td>
+                      <td>{{fetchedData.dateOfBirth | date:'shortDate'}}</td>
+                    </tr>
+              </tbody>
 
-      </div>
-      
+              <tbody>
+                  <tr>
+                      <td><b>Gender : </b></td>
+                      <td>:</td>
+                      <td>{{fetchedData.gender}}</td>
+                    </tr>
+              </tbody>
 
-      
+              <tbody>
+                  <tr>
+                      <td><b>Hobbies</b></td>
+                      <td>:</td>
+                      <td> {{fetchedData.hobbies}}</td>
+                    </tr>
+              </tbody>
 
+              <tbody>
+                  <tr>
+                      <td><b>Phone Number</b></td>
+                      <td>:</td>
+                      <td> {{fetchedData.phoneNumber}}</td>
+                    </tr>
+              </tbody>
 
+              <tbody>
+                  <tr>
+                      <td><b>Address</b></td>
+                      <td>:</td>
+                      <td> {{fetchedData.address}}</td>
+                    </tr>
+              </tbody>
 
+              <tbody>
+                  <tr>
+                      <td><b>City</b></td>
+                      <td>:</td>
+                      <td> {{fetchedData.city}}</td>
+                    </tr>
+              </tbody>
+              <tbody>
+                  <tr>
+                      <td><b>State</b></td>
+                      <td>:</td>
+                      <td> {{fetchedData.state}}</td>
+                    </tr>
+              </tbody>
+
+              <tbody>
+                  <tr>
+                      <td><b>Zipcode</b></td>
+                      <td>:</td>
+                      <td> {{fetchedData.zipcode}}</td>
+                    </tr>
+              </tbody>
+
+              <tbody>
+                  <tr>
+                      <td><b>Email</b></td>
+                      <td>:</td>
+                      <td> {{fetchedData.email}}</td>
+                    </tr>
+              </tbody>
+            </table>
+          </div>
     </section>
+</div>

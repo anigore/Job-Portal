@@ -16,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginPageComponent implements OnInit {
 
   loginForm: FormGroup;
+  token : any;
 
   validationMessages = {
     'username': {
@@ -48,6 +49,10 @@ export class LoginPageComponent implements OnInit {
     this.loginForm.valueChanges.subscribe((data) => {
       this.logValidationErrors(this.loginForm);
     });
+
+    if(this._services.isloggedIn()){
+      this.router.navigate(['/dashboard']);
+    }
   }
 
 
@@ -73,18 +78,16 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
-
   onClick() {
-    var username = this.loginForm.value.username
-  console.log("username - ",this.loginForm.value.username)
     this._services.loginCheck(this.loginForm.value).subscribe((res: any) => {
-      //console.log(res.status);
       if (res.status === true) {
         this.toastr.success('Welcome to Job Portal','login succesfuly',{
           timeOut: 2000
         });
-        
-        this.router.navigate(['/dashboard',username],{ skipLocationChange: true} );
+        this.token = res.username;
+        this._services.setToken(this.token);
+        console.log("token",this.token);
+        this.router.navigate(['/dashboard']);
         this._services.setLoggedIn(true)
       }
       else {
