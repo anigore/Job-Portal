@@ -1,0 +1,152 @@
+body {
+    background-color: #EBEAEC;
+  }
+  
+  .card {
+    height: auto;
+    width: 90%;
+    background-color: #FFF;
+    border-radius: 5px;
+    margin: 40px auto;
+    transition: .15s linear;
+    -moz-transition: .15s linear;
+    box-shadow: 0px 0px 1px #999;
+  }
+  
+  #image-container {
+    border-bottom: 2px solid #EBEAEC;
+    height: 190px;
+    width: 100%;
+  }
+  #image-container img {
+    position: relative;
+    top: 20px;
+    left: 20px;
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    border-radius: 250px;
+    padding: 3px;
+    border: 2px solid #EBEAEC;
+  }
+  
+  #incommon,
+  #close {
+    min-width: 23px;
+    min-height: 23px;
+  }
+  #incommon a,
+  #close a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 12px;
+    position: relative;
+    top: 5px;
+  }
+  
+  #incommon {
+    display: inline;
+    position: relative;
+    right: 10px;
+    top: 10px;
+    float: right;
+    background-color: #0FBE4F;
+    color: #FFF;
+    width: 21px;
+    font-size: 10px;
+    border-radius: 25px;
+    text-align: center;
+    font-family: Helvetica Neue, Helvetica;
+  }
+  
+  #close {
+    display: none;
+    position: relative;
+    right: 175px;
+    top: 10px;
+    float: right;
+    background-color: #9F0E22;
+    color: #FFF;
+    font-size: 11px;
+    border-radius: 50%;
+    font-weight: bolder;
+    text-align: center;
+    font-weight: 300;
+  }
+  
+  #image-container:hover #close, #image-container:hover #incommon {
+    display: inline;
+    cursor: pointer;
+  }
+  
+  #name {
+    font-size: 24px;
+    font-weight: 500;
+    font-family: "Raleway", Helvetica Neue, Helvetica;
+    letter-spacing: -0.5px;
+    text-align: left;
+    padding: 10px 0 0 18px;
+  }
+  
+  #job {
+    font-size: 16px;
+    font-family: "Raleway", Helvetica Neue, Georgia;
+    font-weight: 200;
+    letter-spacing: 0px;
+    line-height: 20px;
+    text-align: left;
+    padding: 5px 0 0 19px;
+  }
+  
+  #connect {
+    position: relative;
+    top: 38px;
+    text-align: center;
+  }
+  #connect a {
+    display: block;
+    text-decoration: none;
+    color: #5FBEFF;
+    font-weight: 400;
+    padding: 14px 0px;
+    border-top: 2px solid #EBEAEC;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-family: Helvetica Neue, Helvetica;
+    letter-spacing: 0.5px;
+  }
+  #connect a:hover {
+    border-top: 2px solid #F2F3F3;
+    background-color: #5FBEFF;
+    color: #fff;
+  }
+  
+  .added {
+    position: absolute;
+    display: none;
+    height: 360px;
+    width: 230px;
+    background-color: #5FBEFF;
+    border-radius: 5px;
+    margin: 20px auto;
+    box-shadow: 0px 0px 1px #999;
+    top: 20px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    text-align: center;
+  }
+  .added img {
+    padding: 50% 0 0;
+  }
+  .added span {
+    color: #fff;
+    font-family: "Raleway", Helvetica Neue, Helvetica;
+    font-weight: 100;
+    display: inline-block;
+    width: 100%;
+    height: 100px;
+    padding: 2% 0;
+    margin: 0 auto;
+  }
+  

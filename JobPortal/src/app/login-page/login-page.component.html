@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>create product</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+
+<div class="box">
+
+  <body class="row">
+    <div class="container">
+      <h3>Login Page</h3><br><br>
+      <form [formGroup]="loginForm" class="form-horizontal">
+
+        <div class="form-group" [ngClass]="{'has-error' : formErrors.username}">
+          <label class="col-md-5">username</label>
+          <input formControlName="username" class="col-md-5" type="text" name="username" placeholder="add username"
+            required autocomplete="off" (blur)="logValidationErrors()">
+          <div>
+            <div class="text-danger " *ngIf="formErrors.username">
+              {{formErrors.username}}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group" [ngClass]="{'has-error' : formErrors.password}">
+          <label class="col-md-5">Password</label>
+          <input type="password" formControlName="password" class="col-md-5" name="password" placeholder="add password"
+            required autocomplete="off" (blur)="logValidationErrors()">
+
+          <div>
+            <div class="text-danger" *ngIf="formErrors.password">
+              {{formErrors.password}}
+            </div>
+          </div><br>
+
+
+        </div>
+        <div class="form-group">
+          <button class="btn btn-info" [disabled]='loginForm.invalid' (click) = "onClick()">LOGIN</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          <a class="btn btn-secondary" href = "/registration" >Register</a>
+        </div>
+          <a href="/emailSender">forrgot password</a>
+         
+
+
+      </form>
+    </div>
+
+  </body>
+</div>
+
+</html>

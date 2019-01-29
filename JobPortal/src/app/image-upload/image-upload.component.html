@@ -1,0 +1,7 @@
+<form [formGroup]="uploadFile">
+    <input type="file" #imageInput  accept="image/*" formControlName="photo">
+
+</form>
+ 
+
+<button type="submit" (click) = "processFile(imageInput)">add</button>

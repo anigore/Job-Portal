@@ -1,0 +1,78 @@
+<div class="col-md-8 mx-auto">
+    <div class="card border">
+      <div class="card-header">
+        <h3 class="panel-title text-center">Welcome To Job Portal</h3>
+      </div>
+      <div class="card-body">
+  
+
+    <section class="card">
+      <div id="image-container">
+          <div style=" text-align: center">
+              <h3 style="color:rgba(83, 82, 80, 0.925)"> <label ><b>Hello </b></label>
+               {{fetchedData.username}}</h3>
+             </div>
+        <img src="http://localhost:3000/{{fetchedData.photo}}">
+       
+       
+      </div>
+      <div class="offset-md-1">
+
+          <div>
+              <label><b>Name : </b></label>
+              {{fetchedData.firstName}} {{fetchedData.lastName}}
+            </div>
+      
+            <div>
+              <label><b>Date Of Birth : </b></label>
+              {{fetchedData.dateOfBirth | date:'shortDate'}}
+            </div>
+      
+            <div>
+              <label><b>Gender : </b></label>
+              {{fetchedData.gender}}
+            </div>
+      
+            <div>
+                <label><b>Hobbies : </b></label>
+                {{fetchedData.hobbies}}
+              </div>
+      
+            <div>
+              <label><b>Phone Number : </b></label>
+              {{fetchedData.phoneNumber}}
+            </div>
+      
+            <div>
+              <label><b>Address : </b></label>
+              {{fetchedData.adress}}
+            </div>
+      
+            <div>
+              <label><b>City : </b></label>
+              {{fetchedData.city}}
+            </div>
+      
+            <div >
+                <label><b>State : </b></label>
+                {{fetchedData.state}}
+              </div>
+      
+            <div>
+              <label><b>Zipcode : </b></label>
+              {{fetchedData.zipcode}}
+            </div>
+      
+            <div >
+                <label><b>Email : </b></label>
+                {{fetchedData.email}}
+              </div>
+
+      </div>
+      
+
+      
+
+
+
+    </section>

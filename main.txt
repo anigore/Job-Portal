@@ -1,0 +1,52 @@
+// node API to check unique email....
+
+
+router.post('/api/customers/checkEmailNotTaken', (req, res, next) => {
+  const customerId = req.body.customerId;
+
+  Customer.findOne({email: req.body.email})
+    .then(customer => {
+      // No customer with the same email in the database
+      if (!customer) {
+        return res.json({
+          emailNotTaken: true
+        });
+      }
+
+      // Validate the 'edit customer' form
+      if (customerId) {
+        if (customerId === customer._id.toString()) {
+          return res.json({
+            emailNotTaken: true
+          })
+        } else {
+          return res.json({
+            emailNotTaken: false
+          })
+        }
+      }
+      // Validate the 'create customer' form
+      else {
+        res.json({
+          emailNotTaken: false
+        })
+      }
+    })
+    .catch(error => {
+      res.json({
+        emailNotTaken: true
+      })
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+            

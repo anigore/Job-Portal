@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+ @import '~ngx-toastr/toastr.css'; 
+ #toast-container > div {
+    opacity:1;
+    }
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .box
+{
+    padding: 170px;
+}
+
+.box p
+{
+    font-size: 90%;
+    line-height:145%;
+}
+
+.row
+{
+    text-align: center;
+    max-width: 70%;
+    margin: 0 auto;
+    background-color: #b6b3b12c;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    box-sizing: border-box;
+    box-align: center;
+    -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+}
+
+

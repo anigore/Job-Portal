@@ -1,0 +1,187 @@
+<div class="col-md-6 mx-auto">
+  <div class="card border">
+    <div class="card-header">
+      <h3 class="panel-title text-center">Job Portal</h3>
+    </div>
+    <div class="card-body">
+
+
+      <form [formGroup]="candidateForm" class="form-horizontal">
+        <div class="panel panel-primary">
+          <div class="panel-body">
+
+            <!-- *** first name *** -->
+            <div class="form-group  " [ngClass]=" {'has-error' : formErrors.firstName}">
+              <label class=" control-label" for="firstName"><b>First Name</b></label>
+              <input formControlName="firstName" id="firstName" #firstName type="text" required autocomplete="off"
+                class="form-control" (blur)="logValidationErrors()">
+              <span class="text-danger" *ngIf="formErrors.firstName">
+                {{formErrors.firstName}}
+              </span>
+            </div>
+
+            <!-- *** last name *** -->
+            <div class="form-group" [ngClass]="{'has-error' : formErrors.lastName}">
+              <label class=" control-label" for="lastName"><b>Last Name</b></label>
+              <input formControlName="lastName" required autocomplete="off" id="lastName" type="text" class="form-control"
+                (blur)="logValidationErrors()">
+              <span class="text-danger" *ngIf="formErrors.lastName">
+                {{formErrors.lastName}}
+              </span>
+            </div>
+
+            <!-- *** Date of birth *** -->
+            <div class="form-group" [ngClass]="{'has-error' : formErrors.dateOfBirth}">
+              <label class=" control-label" for="dateOfBirth"><b>Date Of Birth</b></label>
+              <input formControlName="dateOfBirth" id="dateOfBirth" required autocomplete="off" type="text" class="form-control"
+                bsDatepicker (blur)="logValidationErrors()">
+              <span class="text-danger" *ngIf="formErrors.dateOfBirth">
+                {{formErrors.dateOfBirth}}
+              </span>
+            </div>
+
+            <!-- *** gender *** -->
+            <div class="form-group" [ngClass]="{'has-error': formErrors.gender}">
+              <label class="col-md-2 control-label">Gender</label>
+              <div class="col-md-8">
+                <label class="radio-inline">
+                  <input type="radio" value="male" formControlName="gender" (blur)="logValidationErrors()">Male
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" value="female" formControlName="gender" (blur)="logValidationErrors()">Female
+                </label>
+                <span class="text-danger" *ngIf="formErrors.gender">
+                  {{formErrors.gender}}
+                </span>
+              </div>
+            </div>
+
+            <!-- *** hobbies *** -->
+            <div class="form-group">
+              <label class="col-md-8 control-label"><b>Hobbies</b></label>
+              <div class="col-md-6">
+                <div class="custom-control custom-checkbox custom-control-inline">
+                  <label class="control-label" formArrayName="hobbies" *ngFor="let hobbie of candidateForm.controls['hobbies'].controls; let i = index ">
+                    <input type="checkbox" [formControlName]="i" [value]="hobbies[i].hobbie">{{hobbies[i].hobbie}}
+                  </label>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- *** phone number *** -->
+            <div class="form-group" [ngClass]="{'has-error' : formErrors.phoneNumber}">
+              <label class=" control-label" for="phoneNumber"><b>Phone Number</b></label>
+              <input type="text" specialCharacters="[ '(' ,')' , '-' ]" mask='(000)000-0000' formControlName="phoneNumber"
+                required autocomplete="off" id="phoneNumber" type="text" class="form-control" (blur)="logValidationErrors()">
+              <span class="text-danger" *ngIf="formErrors.phoneNumber">
+                {{formErrors.phoneNumber}}
+              </span>
+            </div>
+
+            <!-- *** address *** -->
+            <div class="form-group" [ngClass]="{'has-error' : formErrors.address}">
+              <label class=" control-label" for="address">
+                <b>Address</b>
+              </label>
+              <textarea class="form-control" required autocomplete="off" formControlName="address" rows="5"></textarea>
+
+              <span class="text-danger" *ngIf="formErrors.address">
+                {{formErrors.address}}
+              </span>
+            </div>
+
+            <!-- *** city *** -->
+            <div class="form-group" [ngClass]="{'has-error' : formErrors.city}">
+              <label class=" control-label" for="city"><b>City</b></label>
+              <input formControlName="city" id="city" #firstName type="text" class="form-control" (blur)="logValidationErrors()">
+              <span class="text-danger" *ngIf="formErrors.city">
+                {{formErrors.city}}
+              </span>
+            </div>
+
+            <!-- *** state *** -->
+            <div class="form-group" [ngClass]="{'has-error' : formErrors.state}">
+              <label class=" control-label" for="city"><b>State</b></label>
+              <select class="form-control" id="state " formControlName="state">
+                <option class="form-control">Select State</option>
+                <option class="form-control" *ngFor="let state of states">{{state.state}}</option>
+              </select>
+              <span class="text-danger" *ngIf="formErrors.state">
+                {{formErrors.state}}
+              </span>
+            </div>
+
+            <!-- *** zipcode *** -->
+            <div class="form-group" [ngClass]="{'has-error' : formErrors.zipcode}">
+              <label class=" control-label" for="zipcode"><b>Zipcode</b></label>
+
+
+              <input formControlName="zipcode" id="zipcode" #firstName type="number" class="form-control" (blur)="logValidationErrors()">
+              <div *ngIf="candidateForm.controls['zipcode'].invalid && candidateForm.controls['zipcode'].dirty || candidateForm.controls['zipcode'].touch">
+                <span class="text-danger" *ngIf="formErrors.zipcode">
+                  {{formErrors.zipcode}}
+                </span>
+              </div>
+            </div>
+
+            <!-- *** email *** -->
+            <div class="form-group" [ngClass]="{'has-error' : formErrors.email}">
+              <label class="control-label" for="email"><b>Email</b></label>
+              <input formControlName="email" id="email" (change)="onEmailChanged()" type="text" class="form-control"
+                (blur)="logValidationErrors()">
+              <span class="text-danger" *ngIf="formErrors.email">
+                {{formErrors.email}}
+              </span>
+            </div>
+
+            <!-- *** username *** -->
+            <div class="form-group" [ngClass]="{'has-error' : formErrors.username}">
+              <label for="usernamme"><b>Username</b></label>
+              <input formControlName="username" id="username" (change)="onUsernameChanged()" type="text" class="form-control"
+                (blur)="logValidationErrors()">
+                <span class="text-danger" *ngIf="formErrors.username">
+                {{formErrors.username}}
+              </span>
+            </div>
+
+            <!-- *** password *** -->
+            <div class="form-group" [ngClass]="{'has-error' : formErrors.password}">
+              <label class="col-sm-8 control-label" for="password"><b>password</b></label>
+              <input formControlName="password" id="password" type="password" class="form-control" (blur)="logValidationErrors()">
+              <span class="text-danger" *ngIf="formErrors.password">
+                {{formErrors.password}}
+              </span>
+
+
+            </div>
+
+            <!-- *** confirm password *** -->
+            <div class="form-group" [ngClass]="{'has-error' : formErrors.confirmPassword}">
+              <label class="col-sm-8 control-label" for="password"><b>Confirm Password</b></label>
+              <input formControlName="confirmPassword" appUniquePasswordValidator="password" id="confirmPassword" type="password" class="form-control" (blur)="logValidationErrors()">
+              <span class="text-danger" *ngIf="formErrors.confirmPassword">
+                {{formErrors.confirmPassword}}
+              </span>
+            </div>
+
+            <!-- *** photo *** -->
+            <div class="form-group" [ngClass]="{'has-error' : formErrors.photo}">
+              <input #imageInput type="file" (change)="onFileChanged(imageInput)" accept="image/*" formControlName="photo" (blur)="logValidationErrors()">
+              <!-- <button class="btn btn-secondary" (click)="onFileChanged(imageInput)">upload photo</button> -->
+              <span class="text-danger" *ngIf="formErrors.photo">
+                {{formErrors.photo}}
+              </span>
+            </div>
+          
+          </div>
+          
+          <!-- ***  *** -->
+          <div class="form-group">
+            <button class="btn btn-primary"[disabled]='candidateForm.invalid' (click)="onClick()" type="button">REGISTER</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
