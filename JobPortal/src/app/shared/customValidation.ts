@@ -27,24 +27,37 @@
     return (control:AbstractControl) : {[key : string] : any} | null => {
     const password : string = control.value;
     
-    if(password === '' || (password.match(/^[A-Za-z](?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{3,8}$/))) {
+    if(password === '' || (password.match(/^[A-Za-z](?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$/))) {
       return null;
     } 
     else{
-      return { 'usernameField' : true };
+      return { 'passwordField' : true };
     }
   };
 }
 
-static uniqueUsername(){
-  return (control:AbstractControl) : {[key : string] : any} | null => {
-  const username : string = control.value;
+// static uniqueUsername(){
+//   return (control:AbstractControl) : {[key : string] : any} | null => {
+//   const username : string = control.value;
   
-  if(username === '' || username.toLowerCase() && username.match(/^[a-z]*$/)) {
+//   if(username === '' || username.toLowerCase() && username.match(/^[a-z]*$/)) {
+//     return null;
+//   } 
+//   else{
+//     return { 'usernameField' : true };
+//   }
+// };
+// }control
+
+static emailFieldValidator(){
+  return (control:AbstractControl) : {[key : string] : any} | null => {
+  const email : string = control.value;
+  
+  if(email === '' ||email.match(/^[\w-\.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
     return null;
   } 
   else{
-    return { 'usernameField' : true };
+    return { 'emailField' : true };
   }
 };
 }

@@ -9,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  username : any;
-  public fetchedData : Candidate[];
+  username: any;
+  public fetchedData: Candidate[];
 
-  constructor(private router: Router,public service: HttpService,private route: ActivatedRoute) { }
+  constructor(private router: Router, public service: HttpService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getUsername()
@@ -20,16 +20,16 @@ export class DashboardComponent implements OnInit {
 
   logout(): void {
     console.log("Logout");
-   this.service.logout();
-   
+    this.service.logout();
+
     this.router.navigate(['/login']);
   }
 
-  getUsername(){
+  getUsername() {
     this.username = this.service.getToken();
-    this.service.getCandidateData(this.username).subscribe((res : any) =>{
+    this.service.getCandidateData(this.username).subscribe((res: any) => {
       this.fetchedData = res.docs
-      console.log("data - ",this.fetchedData)
+      console.log("data - ", this.fetchedData)
     })
   }
 

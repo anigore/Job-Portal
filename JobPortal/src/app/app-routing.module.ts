@@ -1,3 +1,4 @@
+import { HomePageComponent } from './home-page/home-page.component';
 import { AuthGuard } from './auth.guard';
 import { ForrgotPasswordComponent } from './forrgot-password/forrgot-password.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -13,7 +14,8 @@ const routes : Routes=[
   {path:'dashboard' , component : DashboardComponent,canActivate:[AuthGuard]},
   {path:'forgotPassword/:email',component:ForrgotPasswordComponent},
   {path:'emailSender',component:EmailSenderComponent},
-  {path:'',redirectTo:'login',pathMatch:'full'}
+  {path:'homepage',component:HomePageComponent},
+  {path:'',redirectTo:'homepage',pathMatch:'full'}
 ];
 
 

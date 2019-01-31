@@ -12,12 +12,12 @@ import { Router } from '@angular/router';
 import { ImageUploadComponent } from '../image-upload/image-upload.component';
 
 
-enum Gender {
-  male = 0,
-  female = 1
-}
+// enum Gender {
+//   male = 0,
+//   female = 1
+// }
 
- 
+
 
 @Component({
   selector: 'app-registration-form',
@@ -29,12 +29,14 @@ export class RegistrationFormComponent implements OnInit {
   states: State[];
   gender: string[];
   candidateForm: FormGroup;
+  uniqueUsername: boolean;
+  uniqueEmail: boolean;
 
-  hobbies =  [
-    {id : 1, hobbie:'cricket'},
-    {id : 2, hobbie:'singing'},
-    {id : 3, hobbie:'dancing'},
-    {id : 4, hobbie:'acting'}
+  hobbies = [
+    { id: 1, hobbie: 'cricket' },
+    { id: 2, hobbie: 'singing' },
+    { id: 3, hobbie: 'dancing' },
+    { id: 4, hobbie: 'acting' }
   ];
 
 
@@ -49,7 +51,8 @@ export class RegistrationFormComponent implements OnInit {
     },
 
     'email': {
-      'required': 'email is required...'
+      'required': 'email is required...',
+      'emailField': 'Entar valid email address...'
     },
 
     'gender': {
@@ -91,20 +94,21 @@ export class RegistrationFormComponent implements OnInit {
 
     'password': {
       'required': 'password is required...',
-      // 'maxlength': 'password is not more than 8 characters...',
-      // 'minlength': 'password has atleast 4 characters',
-      'usernameField': 'password should contain atleast one number and one special character...'
+      'maxlength': 'password is not more than 8 characters...',
+      'minlength': 'password has atleast 4 characters',
+      'passwordField': 'password should contain atleast one number and one special character...'
     },
 
     'username': {
       'required': 'username is required...',
-      'usernameField': 'username should be in small letters...'
+      'usernameField': 'username should be in small letters...',
+      'uniqueUsername': 'not unique..'
     },
 
     'confirmPassword': {
       'required': 'confirm password is required...',
       'notEqual': 'password not matching...',
-      
+
 
     },
 
@@ -146,8 +150,8 @@ export class RegistrationFormComponent implements OnInit {
 
 
     // for gender enum
-    var gender = Object.keys(Gender);
-    this.gender = gender.slice(gender.length / 2);
+   // var gender = Object.keys(Gender);
+    //this.gender = gender.slice(gender.length / 2);
     const formControls = this.hobbies.map(control => new FormControl(false));
 
     this.candidateForm = this.fb.group({
@@ -160,8 +164,8 @@ export class RegistrationFormComponent implements OnInit {
       city: ['', Validators.required],
       state: ['', Validators.required],
       zipcode: ['', [Validators.required, Validators.maxLength(6), Validators.minLength(6)]],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required, CustomValidation.passwordFieldValidator()]],
+      email: ['', [Validators.required, CustomValidation.emailFieldValidator()]],
+      password: ['', [Validators.required, CustomValidation.passwordFieldValidator(), Validators.maxLength(8), Validators.minLength(4)]],
       confirmPassword: ['', [Validators.required,]],
       dateOfBirth: ['', Validators.required],
       username: ['', [Validators.required, CustomValidation.usernameFieldValidator()]],
@@ -207,26 +211,27 @@ export class RegistrationFormComponent implements OnInit {
     });
   }
 
-  selectedHobbies() {
-    const selectedHobbie = this.candidateForm.value.hobbies.map((checked, index) => checked)
-  }
+  // /** */
+  // selectedHobbies() {
+  //   const selectedHobbie = this.candidateForm.value.hobbies.map((checked, index) => checked)
+  // }
 
   /**function to get image and send to imageUploader component */
-  
+
   onFileChanged(inpuImage) {
     this.imageUploader.processFile(inpuImage)
   }
 
   /* ** Adding data on server */
-  
+
   onClick() {
     const selectedPreferences = this.candidateForm.value.hobbies
-    
-    .map((checked, index) => checked ? this.hobbies[index].hobbie : null)
-    .filter(value => value !== null);
- 
-  this.candidateForm.controls['hobbies'].patchValue(selectedPreferences);
-console.log("inside candidate",this.candidateForm);
+
+      .map((checked, index) => checked ? this.hobbies[index].hobbie : null)
+      .filter(value => value !== null);
+
+    this.candidateForm.controls['hobbies'].patchValue(selectedPreferences);
+    console.log("inside candidate", this.candidateForm);
 
     this._services.creatCandidate(this.candidateForm.value).subscribe((res: any) => { alert('data addded') });
     this.router.navigateByUrl('/login')
@@ -234,18 +239,16 @@ console.log("inside candidate",this.candidateForm);
 
 
   /** checking unique email.. */
-  
+
   onEmailChanged() {
     this._services.checkEmail({ "email": this.candidateForm.value.email }).subscribe((res: any) => {
       console.log(res.status);
       if (res.status === true) {
-        console.log("in if", this.candidateForm.value.email)
-        this.toastr.success('unique email');
+        this.uniqueEmail = false
 
       }
       else {
-        console.log("in else", this.candidateForm.value.email)
-        this.toastr.error('email is already exist...');
+        this.uniqueEmail = true
       }
     })
   }
@@ -253,15 +256,13 @@ console.log("inside candidate",this.candidateForm);
 
   onUsernameChanged() {
     this._services.checkUsername({ "username": this.candidateForm.value.username }).subscribe((res: any) => {
-    
+
       if (res.status === true) {
-        //console.log("in if", this.candidateForm.value.username)
-        this.toastr.success('unique username');
+        this.uniqueUsername = false
 
       }
       else {
-       // console.log("in else", this.candidateForm.value.username)
-        this.toastr.error('username is already exist...');
+        this.uniqueUsername = true
       }
     })
   }

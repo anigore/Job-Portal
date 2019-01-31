@@ -8,6 +8,7 @@ import { HttpService } from '../http.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, RouteReuseStrategy } from "@angular/router";
 import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forrgot-password',
@@ -28,9 +29,9 @@ export class ForrgotPasswordComponent implements OnInit {
 
     'password': {
       'required': 'password is required...',
-      // 'maxlength': 'password is not more than 8 characters...',
-      // 'minlength': 'password has atleast 4 characters',
-      'usernameField': 'password should contain atleast one number and one special character...'
+      'maxlength': 'password is not more than 8 characters...',
+      'minlength': 'password has atleast 4 characters',
+      'passwordField': 'password should contain atleast one number and one special character...'
     },
 
     'confirmPassword': {
@@ -49,12 +50,13 @@ export class ForrgotPasswordComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private _services: HttpService,
     private toastr: ToastrService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.forgotPasswordForm = this.fb.group({
       //email: ['', [Validators.required]],
-      password: ['', [Validators.required, CustomValidation.passwordFieldValidator()]],
+      password: ['', [Validators.required, CustomValidation.passwordFieldValidator(), Validators.maxLength(80), Validators.minLength(80)]],
       confirmPassword: ['', [Validators.required]]
     })
 
@@ -63,7 +65,7 @@ export class ForrgotPasswordComponent implements OnInit {
     });
 
 
-    this.  email = this.route.snapshot.paramMap.get("email")
+    this.email = this.route.snapshot.paramMap.get("email")
     console.log("my email", this.email);
 
   }
@@ -99,6 +101,8 @@ export class ForrgotPasswordComponent implements OnInit {
         this.toastr.success('done...', 'password change successfully', {
           timeOut: 2000
         });
+
+        this.router.navigate(['/login']);
 
       }
       else {

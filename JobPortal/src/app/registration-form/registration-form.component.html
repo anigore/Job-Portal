@@ -4,17 +4,16 @@
       <h3 class="panel-title text-center">Job Portal</h3>
     </div>
     <div class="card-body">
-
-
       <form [formGroup]="candidateForm" class="form-horizontal">
         <div class="panel panel-primary">
           <div class="panel-body">
 
             <!-- *** first name *** -->
-            <div class="form-group  " [ngClass]=" {'has-error' : formErrors.firstName}">
+            <div class="form-group" [ngClass]=" {'has-error' : formErrors.firstName}">
               <label class=" control-label" for="firstName"><b>First Name</b></label>
-              <input formControlName="firstName" id="firstName" #firstName type="text" required autocomplete="off"
-                class="form-control" (blur)="logValidationErrors()">
+              <input [class.is-invalid]="candidateForm.controls.firstName.invalid && (candidateForm.controls.firstName.touched || candidateForm.controls.firstName.dirty)"
+                formControlName="firstName" id="firstName" #firstName type="text" required autocomplete="off" class="form-control"
+                (blur)="logValidationErrors()">
               <span class="text-danger" *ngIf="formErrors.firstName">
                 {{formErrors.firstName}}
               </span>
@@ -23,7 +22,8 @@
             <!-- *** last name *** -->
             <div class="form-group" [ngClass]="{'has-error' : formErrors.lastName}">
               <label class=" control-label" for="lastName"><b>Last Name</b></label>
-              <input formControlName="lastName" required autocomplete="off" id="lastName" type="text" class="form-control"
+              <input [class.is-invalid]="candidateForm.controls.lastName.invalid && (candidateForm.controls.lastName.touched || candidateForm.controls.lastName.dirty)"
+                formControlName="lastName" required autocomplete="off" id="lastName" type="text" class="form-control"
                 (blur)="logValidationErrors()">
               <span class="text-danger" *ngIf="formErrors.lastName">
                 {{formErrors.lastName}}
@@ -33,7 +33,8 @@
             <!-- *** Date of birth *** -->
             <div class="form-group" [ngClass]="{'has-error' : formErrors.dateOfBirth}">
               <label class=" control-label" for="dateOfBirth"><b>Date Of Birth</b></label>
-              <input formControlName="dateOfBirth" id="dateOfBirth" required autocomplete="off" type="text" class="form-control"
+              <input [class.is-invalid]="candidateForm.controls.dateOfBirth.invalid && (candidateForm.controls.dateOfBirth.touched || candidateForm.controls.dateOfBirth.dirty)"
+                formControlName="dateOfBirth" id="dateOfBirth" required autocomplete="off" type="text" class="form-control"
                 bsDatepicker (blur)="logValidationErrors()">
               <span class="text-danger" *ngIf="formErrors.dateOfBirth">
                 {{formErrors.dateOfBirth}}
@@ -72,7 +73,8 @@
             <!-- *** phone number *** -->
             <div class="form-group" [ngClass]="{'has-error' : formErrors.phoneNumber}">
               <label class=" control-label" for="phoneNumber"><b>Phone Number</b></label>
-              <input type="text" specialCharacters="[ '(' ,')' , '-' ]" mask='(000)000-0000' formControlName="phoneNumber"
+              <input [class.is-invalid]="candidateForm.controls.phoneNumber.invalid && (candidateForm.controls.phoneNumber.touched || candidateForm.controls.phoneNumber.dirty)"
+                type="text" specialCharacters="[ '(' ,')' , '-' ]" mask='(000)000-0000' formControlName="phoneNumber"
                 required autocomplete="off" id="phoneNumber" type="text" class="form-control" (blur)="logValidationErrors()">
               <span class="text-danger" *ngIf="formErrors.phoneNumber">
                 {{formErrors.phoneNumber}}
@@ -84,7 +86,8 @@
               <label class=" control-label" for="address">
                 <b>Address</b>
               </label>
-              <textarea class="form-control" required autocomplete="off" formControlName="address" rows="5"></textarea>
+              <textarea [class.is-invalid]="candidateForm.controls.address.invalid && (candidateForm.controls.address.touched || candidateForm.controls.address.dirty)"
+                class="form-control" required autocomplete="off" formControlName="address" rows="5"></textarea>
 
               <span class="text-danger" *ngIf="formErrors.address">
                 {{formErrors.address}}
@@ -94,7 +97,8 @@
             <!-- *** city *** -->
             <div class="form-group" [ngClass]="{'has-error' : formErrors.city}">
               <label class=" control-label" for="city"><b>City</b></label>
-              <input formControlName="city" id="city" #firstName type="text" class="form-control" (blur)="logValidationErrors()">
+              <input [class.is-invalid]="candidateForm.controls.city.invalid && (candidateForm.controls.city.touched || candidateForm.controls.city.dirty)"
+                formControlName="city" id="city" #firstName type="text" class="form-control" (blur)="logValidationErrors()">
               <span class="text-danger" *ngIf="formErrors.city">
                 {{formErrors.city}}
               </span>
@@ -115,10 +119,9 @@
             <!-- *** zipcode *** -->
             <div class="form-group" [ngClass]="{'has-error' : formErrors.zipcode}">
               <label class=" control-label" for="zipcode"><b>Zipcode</b></label>
-
-
-              <input formControlName="zipcode" id="zipcode" #firstName type="number" class="form-control" (blur)="logValidationErrors()">
-              <div *ngIf="candidateForm.controls['zipcode'].invalid && candidateForm.controls['zipcode'].dirty || candidateForm.controls['zipcode'].touch">
+              <input [class.is-invalid]="candidateForm.controls.zipcode.invalid && (candidateForm.controls.zipcode.touched || candidateForm.controls.zipcode.dirty)"
+                formControlName="zipcode" specialCharacters="[]" mask='000000' type="text" class="form-control" (blur)="logValidationErrors()">
+              <div>
                 <span class="text-danger" *ngIf="formErrors.zipcode">
                   {{formErrors.zipcode}}
                 </span>
@@ -128,27 +131,43 @@
             <!-- *** email *** -->
             <div class="form-group" [ngClass]="{'has-error' : formErrors.email}">
               <label class="control-label" for="email"><b>Email</b></label>
-              <input formControlName="email" id="email" (change)="onEmailChanged()" type="text" class="form-control"
-                (blur)="logValidationErrors()">
+              <input [class.is-invalid]="(uniqueEmail ||candidateForm.controls.email.invalid) && (candidateForm.controls.email.touched || candidateForm.controls.email.dirty)"
+                formControlName="email" id="email" (input)="onEmailChanged()" type="text" class="form-control" (blur)="logValidationErrors()">
               <span class="text-danger" *ngIf="formErrors.email">
                 {{formErrors.email}}
               </span>
+
+              <div>
+                <span class="text-danger" *ngIf="uniqueEmail">
+                  email is already exist...
+                </span>
+              </div>
             </div>
 
             <!-- *** username *** -->
             <div class="form-group" [ngClass]="{'has-error' : formErrors.username}">
               <label for="usernamme"><b>Username</b></label>
-              <input formControlName="username" id="username" (change)="onUsernameChanged()" type="text" class="form-control"
+              <input [class.is-invalid]="(uniqueUsername || candidateForm.controls.username.invalid) && (candidateForm.controls.username.touched || candidateForm.controls.username.dirty)"
+                formControlName="username" id="username" (input)="onUsernameChanged()" type="text" class="form-control"
                 (blur)="logValidationErrors()">
-                <span class="text-danger" *ngIf="formErrors.username">
+              <span class="text-danger" *ngIf="formErrors.username">
                 {{formErrors.username}}
               </span>
+              <div>
+                <span class="text-danger" *ngIf="uniqueUsername">
+                  username is already exist...
+                </span>
+              </div>
+
+
+
             </div>
 
             <!-- *** password *** -->
             <div class="form-group" [ngClass]="{'has-error' : formErrors.password}">
               <label class="col-sm-8 control-label" for="password"><b>password</b></label>
-              <input formControlName="password" id="password" type="password" class="form-control" (blur)="logValidationErrors()">
+              <input [class.is-invalid]="candidateForm.controls.password.invalid && (candidateForm.controls.password.touched || candidateForm.controls.password.dirty)"
+                formControlName="password" id="password" type="password" class="form-control" (blur)="logValidationErrors()">
               <span class="text-danger" *ngIf="formErrors.password">
                 {{formErrors.password}}
               </span>
@@ -159,7 +178,9 @@
             <!-- *** confirm password *** -->
             <div class="form-group" [ngClass]="{'has-error' : formErrors.confirmPassword}">
               <label class="col-sm-8 control-label" for="password"><b>Confirm Password</b></label>
-              <input formControlName="confirmPassword" appUniquePasswordValidator="password" id="confirmPassword" type="password" class="form-control" (blur)="logValidationErrors()">
+              <input [class.is-invalid]="candidateForm.controls.confirmPassword.invalid && (candidateForm.controls.confirmPassword.touched || candidateForm.controls.confirmPassword.dirty)"
+                formControlName="confirmPassword" appUniquePasswordValidator="password" id="confirmPassword" type="password"
+                class="form-control" (blur)="logValidationErrors()">
               <span class="text-danger" *ngIf="formErrors.confirmPassword">
                 {{formErrors.confirmPassword}}
               </span>
@@ -167,19 +188,20 @@
 
             <!-- *** photo *** -->
             <div class="form-group" [ngClass]="{'has-error' : formErrors.photo}">
-              <input #imageInput type="file" (change)="onFileChanged(imageInput)" accept="image/*" formControlName="photo" (blur)="logValidationErrors()">
+              <input #imageInput type="file" (change)="onFileChanged(imageInput)" accept="image/*" formControlName="photo"
+                (blur)="logValidationErrors()">
               <!-- <button class="btn btn-secondary" (click)="onFileChanged(imageInput)">upload photo</button> -->
               <span class="text-danger" *ngIf="formErrors.photo">
                 {{formErrors.photo}}
               </span>
             </div>
-          
+
           </div>
-          
+
           <!-- ***  *** -->
           <div class="form-group">
-            <button class="btn btn-primary"[disabled]='candidateForm.invalid' (click)="onClick()" type="button">REGISTER</button>&nbsp;&nbsp;
-            <a class="btn btn-secondary" href = "login" type="button">LOGIN</a>
+            <button class="btn btn-primary" [disabled]='candidateForm.invalid' (click)="onClick()" type="button">REGISTER</button>&nbsp;&nbsp;
+            <a class="btn btn-secondary" href="login" type="button">LOGIN</a>
           </div>
         </div>
       </form>

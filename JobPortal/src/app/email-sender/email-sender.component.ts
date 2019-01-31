@@ -6,6 +6,7 @@ import { AbstractControl } from '@angular/forms';
 import { CustomValidation } from 'src/app/shared/customValidation'
 import { HttpService } from '../http.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -27,7 +28,10 @@ export class EmailSenderComponent implements OnInit {
     'email': '',
   };
 
-  constructor(private fb: FormBuilder, private _services: HttpService, private toastr: ToastrService) { }
+  constructor(private fb: FormBuilder,
+    private _services: HttpService,
+    private toastr: ToastrService,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -78,6 +82,7 @@ export class EmailSenderComponent implements OnInit {
         this._services.emailSender(this.emailForm.value).subscribe((res: any) => {
           if (res.status === true) {
             alert("message sent check your email...");
+            this.router.navigate(['/login']);
 
           }
         })

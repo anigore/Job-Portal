@@ -20,7 +20,7 @@ import { ForrgotPasswordComponent } from './forrgot-password/forrgot-password.co
 import { EmailSenderComponent } from './email-sender/email-sender.component';
 import { PhotoAploadComponent } from './photo-apload/photo-apload.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
-import { DemoLoginComponent } from './demo-login/demo-login.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 
@@ -36,7 +36,7 @@ import { DemoLoginComponent } from './demo-login/demo-login.component';
     EmailSenderComponent,
     PhotoAploadComponent,
     ImageUploadComponent,
-    DemoLoginComponent
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
