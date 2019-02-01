@@ -88,7 +88,7 @@ export class LoginPageComponent implements OnInit {
         this._services.setToken(this.token);
         console.log("token",this.token);
         this.router.navigate(['/dashboard']);
-        this._services.setLoggedIn(true)
+        //this._services.setLoggedIn(true)
       }
       else {
         this.toastr.error('You are not valid user', 'not login in', {

@@ -5,7 +5,10 @@ var person = new Schema({
   firstName: String,
   lastName: String,
   gender: {type:String, enum : ['male','female']},
-  hobbies:{type:[String], enum:['cricket','dancing','singing','acting']},  
+  hobbies:{
+    type:[String],
+    enum:['cricket','dancing','singing','acting']
+  },  
   phoneNumber: Number,
   address: String,
   city: String,

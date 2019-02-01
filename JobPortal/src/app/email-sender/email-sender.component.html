@@ -19,7 +19,7 @@
 
         <div class="form-group" [ngClass]="{'has-error' : emailForm.email}">
           <label class="col-md-5">Email</label>
-          <input formControlName="email" class="col-md-5" type="text" name="email" placeholder="add email" required
+          <input formControlName="email" class="col-md-5" type="text" name="email" placeholder="add email" 
             autocomplete="off" (blur)="logValidationErrors()">
           <div>
             <div class="text-danger " *ngIf="emailForm.email">

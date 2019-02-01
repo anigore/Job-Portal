@@ -72,10 +72,10 @@ export class HttpService {
 
 
   
-  private loggedInstatus = false;
-  setLoggedIn(value : boolean){
-    this.loggedInstatus = value
-  }
+  // private loggedInstatus = false;
+  // setLoggedIn(value : boolean){
+  //   this.loggedInstatus = value
+  // }
 
   //  get isLoggedIn(){
 

@@ -1,7 +1,8 @@
-<div class="col-md-6 mx-auto">
-  <div class="card border">
-    <div class="card-header">
-      <h3 class="panel-title text-center">Job Portal</h3>
+
+<div class="col-md-6 mx-auto" style="padding-top:50px">
+  <div class="card border " >
+    <div class="card-header" style="background-color:rgb(107, 107, 107);color: rgb(241, 241, 241)" >
+      <h3 class="panel-title text-center">Registration Form</h3>
     </div>
     <div class="card-body">
       <form [formGroup]="candidateForm" class="form-horizontal">
@@ -43,14 +44,18 @@
 
             <!-- *** gender *** -->
             <div class="form-group" [ngClass]="{'has-error': formErrors.gender}">
-              <label class="col-md-2 control-label">Gender</label>
+              <label class="col-md-2 control-label"><b>Gender</b></label>
               <div class="col-md-8">
-                <label class="radio-inline">
-                  <input type="radio" value="male" formControlName="gender" (blur)="logValidationErrors()">Male
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" value="female" formControlName="gender" (blur)="logValidationErrors()">Female
-                </label>
+                <div  class="custom-control custom-radio">
+                    <label>
+                        <input type="radio"  value="male" formControlName="gender" (blur)="logValidationErrors()">Male
+                      </label>
+                </div>
+                <div  class="custom-control custom-radio">
+                    <label>
+                        <input type="radio" value="female" formControlName="gender" (blur)="logValidationErrors()">Female
+                      </label>
+                </div>
                 <span class="text-danger" *ngIf="formErrors.gender">
                   {{formErrors.gender}}
                 </span>
@@ -59,11 +64,11 @@
 
             <!-- *** hobbies *** -->
             <div class="form-group">
-              <label class="col-md-8 control-label"><b>Hobbies</b></label>
-              <div class="col-md-6">
-                <div class="custom-control custom-checkbox custom-control-inline">
+              <label class="col-md-2 control-label"><b>Hobbies</b></label>
+              <div class="col-md-8">
+                <div class="custom-control">
                   <label class="control-label" formArrayName="hobbies" *ngFor="let hobbie of candidateForm.controls['hobbies'].controls; let i = index ">
-                    <input type="checkbox" [formControlName]="i" [value]="hobbies[i].hobbie">{{hobbies[i].hobbie}}
+                    <input type="checkbox" [formControlName]="i" [value]="hobbies[i].hobbie">{{hobbies[i].hobbie}}&nbsp;&nbsp;&nbsp;&nbsp;
                   </label>
                 </div>
 
@@ -82,16 +87,12 @@
             </div>
 
             <!-- *** address *** -->
-            <div class="form-group" [ngClass]="{'has-error' : formErrors.address}">
+            <div class="form-group">
               <label class=" control-label" for="address">
                 <b>Address</b>
               </label>
-              <textarea [class.is-invalid]="candidateForm.controls.address.invalid && (candidateForm.controls.address.touched || candidateForm.controls.address.dirty)"
+              <textarea 
                 class="form-control" required autocomplete="off" formControlName="address" rows="5"></textarea>
-
-              <span class="text-danger" *ngIf="formErrors.address">
-                {{formErrors.address}}
-              </span>
             </div>
 
             <!-- *** city *** -->
@@ -107,7 +108,7 @@
             <!-- *** state *** -->
             <div class="form-group" [ngClass]="{'has-error' : formErrors.state}">
               <label class=" control-label" for="city"><b>State</b></label>
-              <select class="form-control" id="state " formControlName="state">
+              <select (blur)="logValidationErrors()" class="form-control" id="state " formControlName="state">
                 <option class="form-control">Select State</option>
                 <option class="form-control" *ngFor="let state of states">{{state.state}}</option>
               </select>
@@ -138,10 +139,15 @@
               </span>
 
               <div>
-                <span class="text-danger" *ngIf="uniqueEmail">
+                <span  class="text-danger" *ngIf="uniqueEmail == true">
                   email is already exist...
                 </span>
               </div>
+              <div>
+                  <span  class="text-success" *ngIf="!uniqueEmail && !candidateForm.controls.email.invalid ">
+                    email is unique...
+                  </span>
+                </div>
             </div>
 
             <!-- *** username *** -->
@@ -158,6 +164,12 @@
                   username is already exist...
                 </span>
               </div>
+
+              <div>
+                  <span class="text-success" *ngIf="!uniqueUsername && !candidateForm.controls.username.invalid">
+                    username is unique...
+                  </span>
+                </div>
 
 
 
@@ -199,9 +211,10 @@
           </div>
 
           <!-- ***  *** -->
-          <div class="form-group">
-            <button class="btn btn-primary" [disabled]='candidateForm.invalid' (click)="onClick()" type="button">REGISTER</button>&nbsp;&nbsp;
-            <a class="btn btn-secondary" href="login" type="button">LOGIN</a>
+          <div class="form-group" style="text-align:center">
+            <button class="btn btn-primary" [disabled]='candidateForm.invalid' (click)="onClick()" type="button">REGISTER</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-secondary" href="login" >LOGIN</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-secondary" href="homepage" >HOME</a>
           </div>
         </div>
       </form>

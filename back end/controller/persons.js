@@ -49,7 +49,8 @@ var persons = {
       }
       else {
         res.status(200).json({ status: false, message: 'Added to Mongo successfully', doc: '' });
-        console.log('saved succesfully')
+        console.log('saved succesfully') 
+        this.demo = null;
       }
     });
   },

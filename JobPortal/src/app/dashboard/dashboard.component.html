@@ -1,24 +1,26 @@
+
 <div class="col-md-8 mx-auto">
-    <div class="card border">
+        <div *ngIf="fetchedData">
+    <div class="card border" style="box-shadow:  20px 20px 30px rgb(172, 167, 167)">
         <div class="card-header">
-            <h3 class="panel-title text-center" style="color:rgb(15, 99, 102)">Welcome To Job Portal</h3>
-            <button type="submit" class="btn btn-light" (click)="logout()">Logout</button>
+            <h1 class="panel-title text-center" style="color:rgb(15, 99, 102); font-family: Times New Roman"><b>Welcome</b>&nbsp;{{fetchedData.username}}</h1>
+            
         </div>
         <div class="card-body">
 
 
             <section>
+                
                 <div>
                     <div style=" text-align: center">
-                        <h1 style="color:rgba(6, 54, 83, 0.973); font-family:initial"> <label><b>Hello </b></label>
-                            {{fetchedData.username}}</h1>
-                        <img class="rounded-circle  border border-primary border-5" style="width:200px;height:180px; "
+                        <br><h2 style="color:rgba(6, 54, 83, 0.973); font-family:Times New Roman"> <label> Your&nbsp;Profile </label></h2><br>
+                        <img class="rounded-circle  border border-primary border-5" style="width:250px;height:200px; "
                             src="http://localhost:3000/{{fetchedData.photo}}">
                     </div>
 
                 </div>
-                <div style="margin-left:30%;margin-right:10%;">
-                    <table class="table table-borderless ">
+                <div  style="margin-left:28%;margin-right:20%;color:rgba(10, 34, 36, 0.973)" >
+                    <table class="table table-borderless" >
 
                         <tbody>
                             <tr>
@@ -32,7 +34,7 @@
                             <tr>
                                 <td><b>Date Of Birth </b></td>
                                 <td>:</td>
-                                <td>{{fetchedData.dateOfBirth | date:'shortDate'}}</td>
+                                <td>{{fetchedData.dateOfBirth | date}}</td>
                             </tr>
                         </tbody>
 
@@ -99,6 +101,17 @@
                             </tr>
                         </tbody>
                     </table>
+                    
+                  
                 </div>
+                <div style="text-align:center">
+                        <button type="submit" class="btn btn-dark" (click)="logout()">Logout</button>
+                </div>
+           
             </section>
         </div>
+    </div>
+    </div>
+    </div>
+    
+    

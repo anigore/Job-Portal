@@ -29,8 +29,8 @@ export class RegistrationFormComponent implements OnInit {
   states: State[];
   gender: string[];
   candidateForm: FormGroup;
-  uniqueUsername: boolean;
-  uniqueEmail: boolean;
+  uniqueUsername: any;
+  uniqueEmail: any;
 
   hobbies = [
     { id: 1, hobbie: 'cricket' },
