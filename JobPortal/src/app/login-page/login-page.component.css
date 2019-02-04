@@ -1,1 +1,9 @@
 button {background-color: #b2e622;} 
+
+.loginImage{
+    background-position: center;
+    background-image:url(src/assets/loginlogo2.png);
+    background-size: cover;
+    image-orientation: center;
+    width:100px;height:100px;
+}

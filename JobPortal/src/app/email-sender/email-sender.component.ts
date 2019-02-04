@@ -17,10 +17,12 @@ import { Router } from '@angular/router';
 export class EmailSenderComponent implements OnInit {
 
   emailForm: FormGroup;
+  uniqueEmail : any;
 
   validationMessages = {
     'email': {
-      'required': 'email is required...'
+      'required': 'email is required...',
+      'emailField': 'Entar valid email address...'
     },
   };
 
@@ -36,7 +38,7 @@ export class EmailSenderComponent implements OnInit {
   ngOnInit() {
 
     this.emailForm = this.fb.group({
-      email: ['', [Validators.required]]
+      email: ['', [Validators.required,CustomValidation.emailFieldValidator()]]
     })
 
     this.emailForm.valueChanges.subscribe((data) => {
@@ -88,8 +90,19 @@ export class EmailSenderComponent implements OnInit {
         })
       }
     })
+  }
 
+  onEmailChanged() {
+    this._services.checkEmail({ "email": this.emailForm.value.email }).subscribe((res: any) => {
+      console.log(res.status);
+      if (res.status === true) {
+        this.uniqueEmail = false
 
+      }
+      else {
+        this.uniqueEmail = true
+      }
+    })
   }
 
 

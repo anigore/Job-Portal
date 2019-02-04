@@ -1,16 +1,53 @@
-<!doctype html>
-<html>
+<header>
+  <nav>
+    <div class="row">
+      <li>
+        <h3 class="name" style="color:rgb(172, 233, 115);">JOB PORTAL</h3>
+      </li>
+      <ul class="main-nav offset-md-4">
+        <li><a href="#">ABOUT US</a></li>
+        <li><a href="registration">REGISTER</a></li>
+        <li><a href="homepage">HOME</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
 
-<head>
-  <meta charset="utf-8">
-  <title>Forgot Password</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="col-md-5 mx-auto" style="padding-top:80px; opacity: 0.8">
+  <div class="card border">
 
-</head>
+    <h3 style="color : rgb(90, 148, 19);padding-top:10px;padding-left:70px">Forgot Password</h3>  
+    <div class="loginImage offset-md-4"></div><br>
+    <div class="card-body">
+      <div class="panel panel-primary">
+        <div class="panel-body">
+
+          <form [formGroup]="emailForm" class="form-horizontal">
+
+              <div class="form-group" [ngClass]="{'has-error' : formErrors.email}">
+                  <!-- <label class="control-label" for="email"><b>Email</b></label> -->
+                  <input [class.is-invalid]="(uniqueEmail ||emailForm.controls.email.invalid) && (emailForm.controls.email.touched || emailForm.controls.email.dirty)"
+                    formControlName="email" placeholder="Email Address" id="email" (input)="onEmailChanged()" type="text"
+                    class="form-control" (blur)="logValidationErrors()">
+                  <span class="text-danger" *ngIf="formErrors.email">
+                    {{formErrors.email}}
+                  </span>
+  
+                  <div>
+                  </div>
+                </div><br>
+
+            <div class="form-group" style="text-align:center;">
+              <button class="btn btn-block" style="color:rgb(48, 51, 42) ;background-color: #b2e622" [disabled]='emailForm.invalid'
+                (click)="onClick()">CONFIRM</button>
+
+              <!-- <a class="btn btn-primary" href="homepage">HOME</a> -->
+            </div>
 
 
-<div class="box">
+          </form>
+
+          <!-- <div class="box">
 
   <body class="row">
     <div class="container">
@@ -40,6 +77,4 @@
     </div>
 
   </body>
-</div>
-
-</html>
+</div> -->

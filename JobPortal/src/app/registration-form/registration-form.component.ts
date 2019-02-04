@@ -56,11 +56,11 @@ export class RegistrationFormComponent implements OnInit {
     },
 
     'gender': {
-      'required': 'confirm email is required...',
+      'required': 'gender is required...',
     },
 
     'hobbies': {
-      'required': 'confirm email is required...',
+      'required': 'hobbies is required...',
     },
 
     'dateOfBirth': {
@@ -211,10 +211,6 @@ export class RegistrationFormComponent implements OnInit {
     });
   }
 
-  // /** */
-  // selectedHobbies() {
-  //   const selectedHobbie = this.candidateForm.value.hobbies.map((checked, index) => checked)
-  // }
 
   /**function to get image and send to imageUploader component */
 

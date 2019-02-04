@@ -2,9 +2,9 @@
   <nav>
     <div class="row">
       <li>
-        <h3 class="name" style="color:#b2e622">JOB PORTAL</h3>
+        <h3 class="name" style="color:rgb(172, 233, 115)">JOB PORTAL</h3>
       </li>
-      <ul class="main-nav offset-md-6">
+      <ul class="main-nav offset-md-4">
         <li><a href="#">ABOUT US</a></li>
         <li><a href="login">LOGIN</a></li>
         <li><a href="homepage">HOME</a></li>
@@ -15,203 +15,234 @@
 
 </header>
 
-<div class="col-md-7 mx-auto " style="padding-top:80px;opacity: 0.75">
+<div class="col-md-9 mx-auto " style="padding-top:80px;opacity: 0.8;">
   <div class="card border ">
-    <h2 style="padding-top:30px;padding-left:50px;color: #779b16;"> Registration Form</h2><br>
+    <h1 class="heading"> Registration Form</h1><br><br>
     <div class="card-body">
       <form [formGroup]="candidateForm" class="form-horizontal">
         <div class="panel panel-primary">
           <div class="panel-body">
 
-            <!-- *** first name *** -->
-            <div class="form-group" [ngClass]=" {'has-error' : formErrors.firstName}">
-              <!-- <label class=" control-label" for="firstName"><b>First Name</b></label> -->
-              <input [class.is-invalid]="candidateForm.controls.firstName.invalid && (candidateForm.controls.firstName.touched || candidateForm.controls.firstName.dirty)"
-                formControlName="firstName" id="firstName" placeholder="first name" type="text" required autocomplete="off"
-                class="form-control" (blur)="logValidationErrors()">
-              <span class="text-danger" *ngIf="formErrors.firstName">
-                {{formErrors.firstName}}
-              </span>
-            </div><br>
+            <!-- Personal Details -->
 
-            <!-- *** last name *** -->
-            <div class="form-group" [ngClass]="{'has-error' : formErrors.lastName}">
-              <!-- <label class=" control-label" for="lastName"><b>Last Name</b></label> -->
-              <input [class.is-invalid]="candidateForm.controls.lastName.invalid && (candidateForm.controls.lastName.touched || candidateForm.controls.lastName.dirty)"
-                formControlName="lastName" placeholder="Last Name" required autocomplete="off" id="lastName" type="text"
-                class="form-control" (blur)="logValidationErrors()">
-              <span class="text-danger" *ngIf="formErrors.lastName">
-                {{formErrors.lastName}}
-              </span>
-            </div><br>
+            <div>
+              <h5 style="color:rgb(118, 150, 31)"><b> PERSONAL DETAILS</b></h5>
+              <br><br>
+            </div>
 
-            <!-- *** Date of birth *** -->
-            <div class="form-group" [ngClass]="{'has-error' : formErrors.dateOfBirth}">
-              <!-- <label class=" control-label" for="dateOfBirth"><b>Date Of Birth</b></label> -->
-              <input [class.is-invalid]="candidateForm.controls.dateOfBirth.invalid && (candidateForm.controls.dateOfBirth.touched || candidateForm.controls.dateOfBirth.dirty)"
-                formControlName="dateOfBirth" id="dateOfBirth" required autocomplete="off" type="text" class="form-control"
-                bsDatepicker placeholder="Date Of Birth" (blur)="logValidationErrors()">
-              <span class="text-danger" *ngIf="formErrors.dateOfBirth">
-                {{formErrors.dateOfBirth}}
-              </span>
-            </div><br>
+            <div class="row">
+              <!-- *** first name *** -->
+              <div class="form-group col-md-6" [ngClass]=" {'has-error' : formErrors.firstName}">
+                <!-- <label class=" control-label" for="firstName"><b>First Name</b></label> -->
+                <input [class.is-invalid]="candidateForm.controls.firstName.invalid && (candidateForm.controls.firstName.touched || candidateForm.controls.firstName.dirty)"
+                  formControlName="firstName" id="firstName" placeholder="first name" type="text" required autocomplete="off"
+                  class="form-control" (blur)="logValidationErrors()">
+                <span class="text-danger" *ngIf="formErrors.firstName">
+                  {{formErrors.firstName}}
+                </span>
+              </div>
 
-            <!-- *** gender *** -->
-            <div class="form-group" [ngClass]="{'has-error': formErrors.gender}">
-              <label class="col-md-2 control-label"><b>Gender</b></label>
-              <div class="col-md-8">
-                <div class="custom-control custom-radio">
-                  <label>
-                    <input type="radio" value="male" formControlName="gender" (blur)="logValidationErrors()">Male
-                  </label>&nbsp;&nbsp;&nbsp;&nbsp;
-                
-                  <label>
-                    <input type="radio" value="female" formControlName="gender" (blur)="logValidationErrors()">Female
-                  </label>
-                </div>
-                <span class="text-danger" *ngIf="formErrors.gender">
-                  {{formErrors.gender}}
+              <!-- *** last name *** -->
+              <div class="form-group col-md-6" style="float:right" [ngClass]="{'has-error' : formErrors.lastName}">
+                <!-- <label class=" control-label" for="lastName"><b>Last Name</b></label> -->
+                <input [class.is-invalid]="candidateForm.controls.lastName.invalid && (candidateForm.controls.lastName.touched || candidateForm.controls.lastName.dirty)"
+                  formControlName="lastName" placeholder="Last Name" required autocomplete="off" id="lastName" type="text"
+                  class="form-control" (blur)="logValidationErrors()">
+                <span class="text-danger" *ngIf="formErrors.lastName">
+                  {{formErrors.lastName}}
+                </span>
+              </div>
+            </div>
+            <br>
+
+            <div class="row">
+
+              <!-- *** Date of birth *** -->
+              <div class="form-group col-md-6" [ngClass]="{'has-error' : formErrors.dateOfBirth}">
+                <!-- <label class=" control-label" for="dateOfBirth"><b>Date Of Birth</b></label> -->
+                <input [class.is-invalid]="candidateForm.controls.dateOfBirth.invalid && (candidateForm.controls.dateOfBirth.touched || candidateForm.controls.dateOfBirth.dirty)"
+                  formControlName="dateOfBirth" id="dateOfBirth" required autocomplete="off" type="text" class="form-control"
+                  bsDatepicker placeholder="Date Of Birth" (blur)="logValidationErrors()">
+                <span class="text-danger" *ngIf="formErrors.dateOfBirth">
+                  {{formErrors.dateOfBirth}}
+                </span>
+              </div>
+
+              <!-- *** phone number *** -->
+
+              <div class="form-group col-md-6" [ngClass]="{'has-error' : formErrors.phoneNumber}">
+                <!-- <label class=" control-label" for="phoneNumber"><b>Phone Number</b></label> -->
+                <input [class.is-invalid]="candidateForm.controls.phoneNumber.invalid && (candidateForm.controls.phoneNumber.touched || candidateForm.controls.phoneNumber.dirty)"
+                  type="text" placeholder="Phone Number" specialCharacters="[ '(' ,')' , '-' ]" mask='(000)000-0000'
+                  formControlName="phoneNumber" required autocomplete="off" id="phoneNumber" type="text" class="form-control"
+                  (blur)="logValidationErrors()">
+                <span class="text-danger" *ngIf="formErrors.phoneNumber">
+                  {{formErrors.phoneNumber}}
                 </span>
               </div>
             </div>
 
+
+            <!-- *** gender *** -->
+
+            <div class="form-group" [ngClass]="{'has-error': formErrors.gender}">
+              <label class="col-md-2 control-label"><b>Gender :</b></label>
+              <label>
+                <input type="radio" value="male" formControlName="gender" (blur)="logValidationErrors()">Male
+              </label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+              <label>
+                <input type="radio" value="female" formControlName="gender" (blur)="logValidationErrors()">Female
+              </label>
+              <span class="text-danger" *ngIf="formErrors.gender">
+                {{formErrors.gender}}
+              </span>
+
+            </div>
+
             <!-- *** hobbies *** -->
             <div class="form-group">
-              <label class="col-md-2 control-label"><b>Hobbies</b></label>
-              <div class="col-md-8">
-                <div class="custom-control">
-                  <label class="control-label" formArrayName="hobbies" *ngFor="let hobbie of candidateForm.controls['hobbies'].controls; let i = index ">
-                    <input type="checkbox" [formControlName]="i" [value]="hobbies[i].hobbie">{{hobbies[i].hobbie}}&nbsp;&nbsp;&nbsp;&nbsp;
-                  </label>
+              <label class="col-md-2 control-label"><b>Hobbies :</b></label>
+              <label class="control-label" formArrayName="hobbies" *ngFor="let hobbie of candidateForm.controls['hobbies'].controls; let i = index ">
+                <input type="checkbox" [formControlName]="i" [value]="hobbies[i].hobbie">{{hobbies[i].hobbie}}&nbsp;&nbsp;&nbsp;&nbsp;
+              </label>
+            </div><br><br>
+
+            <!-- personal Address-->
+            <div>
+              <h5 style="color:rgb(118, 150, 31);border-top: 2px solid rgb(61, 77, 18);padding-top: 70px; "><b>PERSONAL
+                  ADDRESS</b></h5>
+            </div>
+            <br><br>
+
+            <div class="row">
+
+              <!-- *** address *** -->
+              <div class="form-group col-md-6">
+                <!-- <label class=" control-label" for="address"><b>Address</b></label> -->
+                <textarea class="form-control" required autocomplete="off" placeholder="Address" formControlName="address"
+                  rows="8"></textarea>
+              </div>
+              <div class="col-md-6">
+                <!-- *** city *** -->
+                <div class="form-group" [ngClass]="{'has-error' : formErrors.city}">
+                  <!-- <label class=" control-label" for="city"><b>City</b></label> -->
+                  <input [class.is-invalid]="candidateForm.controls.city.invalid && (candidateForm.controls.city.touched || candidateForm.controls.city.dirty)"
+                    formControlName="city" id="city" placeholder="City" type="text" class="form-control" (blur)="logValidationErrors()">
+                  <span class="text-danger" *ngIf="formErrors.city">
+                    {{formErrors.city}}
+                  </span>
+                </div><br>
+
+                <!-- *** state *** -->
+                <div class="form-group" [ngClass]="{'has-error' : formErrors.state}">
+                  <!-- <label class=" control-label" for="city"><b>State</b></label> -->
+                  <select (blur)="logValidationErrors()" class="form-control" id="state " formControlName="state">
+                    <option class="form-control">Select State</option>
+                    <option class="form-control" *ngFor="let state of states">{{state.state}}</option>
+                  </select>
+                  <span class="text-danger" *ngIf="formErrors.state">
+                    {{formErrors.state}}
+                  </span>
+                </div><br>
+
+                <!-- *** zipcode *** -->
+                <div class="form-group" [ngClass]="{'has-error' : formErrors.zipcode}">
+                  <!-- <label class=" control-label" for="zipcode"><b>Zipcode</b></label> -->
+                  <input [class.is-invalid]="candidateForm.controls.zipcode.invalid && (candidateForm.controls.zipcode.touched || candidateForm.controls.zipcode.dirty)"
+                    formControlName="zipcode" placeholder="Postal Code" specialCharacters="[]" mask='000000' type="text"
+                    class="form-control" (blur)="logValidationErrors()">
+                  <div>
+                    <span class="text-danger" *ngIf="formErrors.zipcode">
+                      {{formErrors.zipcode}}
+                    </span>
+                  </div>
+                </div><br>
+
+              </div>
+            </div><br><br>
+
+            <!-- Important field -->
+            <div>
+              <h5 style="color:rgb(118, 150, 31);border-top: 2px solid rgb(61, 77, 18);padding-top: 70px; "><b>
+                  IMPORTANT</b></h5>
+            </div>
+            <br><br>
+
+            <div class="row">
+              <!-- *** email *** -->
+              <div class="form-group col-md-6" [ngClass]="{'has-error' : formErrors.email}">
+                <!-- <label class="control-label" for="email"><b>Email</b></label> -->
+                <input [class.is-invalid]="(uniqueEmail ||candidateForm.controls.email.invalid) && (candidateForm.controls.email.touched || candidateForm.controls.email.dirty)"
+                  formControlName="email" placeholder="Email Address" id="email" (input)="onEmailChanged()" type="text"
+                  class="form-control" (blur)="logValidationErrors()">
+                <span class="text-danger" *ngIf="formErrors.email">
+                  {{formErrors.email}}
+                </span>
+
+                <div>
+                  <span class="text-danger" *ngIf="uniqueEmail == true">
+                    email is already exist...
+                  </span>
+                </div>
+                <div>
+                  <span class="text-success" *ngIf="!uniqueEmail && !candidateForm.controls.email.invalid ">
+                    email is unique...
+                  </span>
+                </div>
+              </div><br>
+
+              <!-- *** username *** -->
+              <div class="form-group col-md-6" [ngClass]="{'has-error' : formErrors.username}">
+                <!-- <label for="usernamme"><b>Username</b></label> -->
+                <input [class.is-invalid]="(uniqueUsername || candidateForm.controls.username.invalid) && (candidateForm.controls.username.touched || candidateForm.controls.username.dirty)"
+                  formControlName="username" id="username" placeholder="Uername" (input)="onUsernameChanged()" type="text"
+                  class="form-control" (blur)="logValidationErrors()">
+                <span class="text-danger" *ngIf="formErrors.username">
+                  {{formErrors.username}}
+                </span>
+                <div>
+                  <span class="text-danger" *ngIf="uniqueUsername">
+                    username is already exist...
+                  </span>
                 </div>
 
-              </div>
-            </div><br>
+                <div>
+                  <span class="text-success" *ngIf="!uniqueUsername && !candidateForm.controls.username.invalid">
+                    username is unique...
+                  </span>
+                </div>
 
-            <!-- *** phone number *** -->
-            <div class="form-group" [ngClass]="{'has-error' : formErrors.phoneNumber}">
-              <!-- <label class=" control-label" for="phoneNumber"><b>Phone Number</b></label> -->
-              <input [class.is-invalid]="candidateForm.controls.phoneNumber.invalid && (candidateForm.controls.phoneNumber.touched || candidateForm.controls.phoneNumber.dirty)"
-                type="text" placeholder="Phone Number" specialCharacters="[ '(' ,')' , '-' ]" mask='(000)000-0000'
-                formControlName="phoneNumber" required autocomplete="off" id="phoneNumber" type="text" class="form-control"
-                (blur)="logValidationErrors()">
-              <span class="text-danger" *ngIf="formErrors.phoneNumber">
-                {{formErrors.phoneNumber}}
-              </span>
-            </div><br>
 
-            <!-- *** address *** -->
-            <div class="form-group">
-              <!-- <label class=" control-label" for="address"><b>Address</b></label> -->
-              <textarea class="form-control" required autocomplete="off" placeholder="Address" formControlName="address"
-                rows="5"></textarea>
-            </div><br>
 
-            <!-- *** city *** -->
-            <div class="form-group" [ngClass]="{'has-error' : formErrors.city}">
-              <!-- <label class=" control-label" for="city"><b>City</b></label> -->
-              <input [class.is-invalid]="candidateForm.controls.city.invalid && (candidateForm.controls.city.touched || candidateForm.controls.city.dirty)"
-                formControlName="city" id="city" placeholder="City" type="text" class="form-control" (blur)="logValidationErrors()">
-              <span class="text-danger" *ngIf="formErrors.city">
-                {{formErrors.city}}
-              </span>
-            </div><br>
+              </div><br>
 
-            <!-- *** state *** -->
-            <div class="form-group" [ngClass]="{'has-error' : formErrors.state}">
-              <!-- <label class=" control-label" for="city"><b>State</b></label> -->
-              <select (blur)="logValidationErrors()" class="form-control" id="state " formControlName="state">
-                <option class="form-control">Select State</option>
-                <option class="form-control" *ngFor="let state of states">{{state.state}}</option>
-              </select>
-              <span class="text-danger" *ngIf="formErrors.state">
-                {{formErrors.state}}
-              </span>
-            </div><br>
-
-            <!-- *** zipcode *** -->
-            <div class="form-group" [ngClass]="{'has-error' : formErrors.zipcode}">
-              <!-- <label class=" control-label" for="zipcode"><b>Zipcode</b></label> -->
-              <input [class.is-invalid]="candidateForm.controls.zipcode.invalid && (candidateForm.controls.zipcode.touched || candidateForm.controls.zipcode.dirty)"
-                formControlName="zipcode" placeholder="Postal Code" specialCharacters="[]" mask='000000' type="text"
-                class="form-control" (blur)="logValidationErrors()">
-              <div>
-                <span class="text-danger" *ngIf="formErrors.zipcode">
-                  {{formErrors.zipcode}}
+            </div>
+            <div class="row">
+              <!-- *** password *** -->
+              <div class="form-group col-md-6" [ngClass]="{'has-error' : formErrors.password}">
+                <!-- <label class="col-sm-8 control-label" for="password"><b>password</b></label> -->
+                <input [class.is-invalid]="candidateForm.controls.password.invalid && (candidateForm.controls.password.touched || candidateForm.controls.password.dirty)"
+                  formControlName="password" placeholder="Password" id="password" type="password" class="form-control"
+                  (blur)="logValidationErrors()">
+                <span class="text-danger" *ngIf="formErrors.password">
+                  {{formErrors.password}}
                 </span>
-              </div>
-            </div><br>
 
-            <!-- *** email *** -->
-            <div class="form-group" [ngClass]="{'has-error' : formErrors.email}">
-              <!-- <label class="control-label" for="email"><b>Email</b></label> -->
-              <input [class.is-invalid]="(uniqueEmail ||candidateForm.controls.email.invalid) && (candidateForm.controls.email.touched || candidateForm.controls.email.dirty)"
-                formControlName="email" placeholder="Email Address" id="email" (input)="onEmailChanged()" type="text"
-                class="form-control" (blur)="logValidationErrors()">
-              <span class="text-danger" *ngIf="formErrors.email">
-                {{formErrors.email}}
-              </span>
 
-              <div>
-                <span class="text-danger" *ngIf="uniqueEmail == true">
-                  email is already exist...
+              </div><br>
+
+              <!-- *** confirm password *** -->
+              <div class="form-group col-md-6" [ngClass]="{'has-error' : formErrors.confirmPassword}">
+                <!-- <label class="col-sm-8 control-label" for="password"><b>Confirm Password</b></label> -->
+                <input [class.is-invalid]="candidateForm.controls.confirmPassword.invalid && (candidateForm.controls.confirmPassword.touched || candidateForm.controls.confirmPassword.dirty)"
+                  formControlName="confirmPassword" placeholder="Confirm Password" appUniquePasswordValidator="password"
+                  id="confirmPassword" type="password" class="form-control" (blur)="logValidationErrors()">
+                <span class="text-danger" *ngIf="formErrors.confirmPassword">
+                  {{formErrors.confirmPassword}}
                 </span>
-              </div>
-              <div>
-                <span class="text-success" *ngIf="!uniqueEmail && !candidateForm.controls.email.invalid ">
-                  email is unique...
-                </span>
-              </div>
-            </div><br>
-
-            <!-- *** username *** -->
-            <div class="form-group" [ngClass]="{'has-error' : formErrors.username}">
-              <!-- <label for="usernamme"><b>Username</b></label> -->
-              <input [class.is-invalid]="(uniqueUsername || candidateForm.controls.username.invalid) && (candidateForm.controls.username.touched || candidateForm.controls.username.dirty)"
-                formControlName="username" id="username" placeholder="Uername" (input)="onUsernameChanged()" type="text"
-                class="form-control" (blur)="logValidationErrors()">
-              <span class="text-danger" *ngIf="formErrors.username">
-                {{formErrors.username}}
-              </span>
-              <div>
-                <span class="text-danger" *ngIf="uniqueUsername">
-                  username is already exist...
-                </span>
-              </div>
-
-              <div>
-                <span class="text-success" *ngIf="!uniqueUsername && !candidateForm.controls.username.invalid">
-                  username is unique...
-                </span>
-              </div>
-
-
-
-            </div><br>
-
-            <!-- *** password *** -->
-            <div class="form-group" [ngClass]="{'has-error' : formErrors.password}">
-              <!-- <label class="col-sm-8 control-label" for="password"><b>password</b></label> -->
-              <input [class.is-invalid]="candidateForm.controls.password.invalid && (candidateForm.controls.password.touched || candidateForm.controls.password.dirty)"
-                formControlName="password" placeholder="Password" id="password" type="password" class="form-control"
-                (blur)="logValidationErrors()">
-              <span class="text-danger" *ngIf="formErrors.password">
-                {{formErrors.password}}
-              </span>
-
-
-            </div><br>
-
-            <!-- *** confirm password *** -->
-            <div class="form-group" [ngClass]="{'has-error' : formErrors.confirmPassword}">
-              <!-- <label class="col-sm-8 control-label" for="password"><b>Confirm Password</b></label> -->
-              <input [class.is-invalid]="candidateForm.controls.confirmPassword.invalid && (candidateForm.controls.confirmPassword.touched || candidateForm.controls.confirmPassword.dirty)"
-                formControlName="confirmPassword" placeholder="Confirm Password" appUniquePasswordValidator="password"
-                id="confirmPassword" type="password" class="form-control" (blur)="logValidationErrors()">
-              <span class="text-danger" *ngIf="formErrors.confirmPassword">
-                {{formErrors.confirmPassword}}
-              </span>
-            </div><br>
+              </div><br>
+            </div>
 
             <!-- *** photo *** -->
             <div class="form-group" [ngClass]="{'has-error' : formErrors.photo}">
@@ -222,7 +253,6 @@
                 {{formErrors.photo}}
               </span>
             </div>
-
           </div>
 
           <!-- ***  *** -->

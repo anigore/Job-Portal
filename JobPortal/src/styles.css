@@ -14,19 +14,24 @@
     } 
 
     
+    .heading{
+        padding-top:30px;
+         border-bottom: 2px solid rgb(133, 209, 97);    
+        color: #779b16;
+        border-bottom: 2px solid #779b16;
+        text-align: center;
+        padding: 20px 50px;
+        
+    }
 
 .name{
-    
-    border-bottom: 2px solid rgb(133, 209, 97);
-    padding: 6px 0;
+    color: #9ecf17;
+    border-bottom: 2px solid rgb(172, 233, 115);
+    /* padding: 0 0; */
 }
 
-.name:hover,
-.name:active{
-    color:  #405c0b;
-    background-attachment: fixed;
-    border-bottom: 2px solid #405c0b;
-}
+
+
 
 .form-control{
     border-top: none;
