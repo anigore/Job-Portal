@@ -14,16 +14,25 @@
   } 
 
   .title{
-    color:rgb(255, 253, 250)
+    color:rgb(255, 253, 250);
   }
 
   .title :hover,
   .title :active{
       background-attachment: fixed;
-      font-size: 41px;
       color: rgb(223, 240, 157);
-      transition: 1s;    
+      font-size: 42px;
+      
+      transition: font-size 0.7s;    
   }
   
+  .title :hover,
+  .title :active{
+      background-attachment: fixed;
+      color: rgb(223, 240, 157);
+      font-size: 42px;
+      
+      transition: font-size 0.7s;    
+  }
   
   

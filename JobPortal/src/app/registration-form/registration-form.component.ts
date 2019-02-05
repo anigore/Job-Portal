@@ -11,14 +11,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { ImageUploadComponent } from '../image-upload/image-upload.component';
 
-
-// enum Gender {
-//   male = 0,
-//   female = 1
-// }
-
-
-
 @Component({
   selector: 'app-registration-form',
   templateUrl: './registration-form.component.html',
@@ -38,8 +30,6 @@ export class RegistrationFormComponent implements OnInit {
     { id: 3, hobbie: 'dancing' },
     { id: 4, hobbie: 'acting' }
   ];
-
-
 
   validationMessages = {
     'firstName': {
@@ -138,8 +128,6 @@ export class RegistrationFormComponent implements OnInit {
 
   }
 
-
-
   constructor(private fb: FormBuilder,
     private _services: HttpService,
     private toastr: ToastrService,
@@ -147,11 +135,6 @@ export class RegistrationFormComponent implements OnInit {
     private imageUploader: ImageUploadComponent) { }
 
   ngOnInit() {
-
-
-    // for gender enum
-   // var gender = Object.keys(Gender);
-    //this.gender = gender.slice(gender.length / 2);
     const formControls = this.hobbies.map(control => new FormControl(false));
 
     this.candidateForm = this.fb.group({
@@ -171,12 +154,12 @@ export class RegistrationFormComponent implements OnInit {
       username: ['', [Validators.required, CustomValidation.usernameFieldValidator()]],
       photo: ['', Validators.required]
     });
-
     this.candidateForm.valueChanges.subscribe((data) => {
       this.logValidationErrors(this.candidateForm);
     });
     this.stateList();
   }
+
 
   /* ** Taking state list from server */
   stateList(): void {
@@ -192,7 +175,6 @@ export class RegistrationFormComponent implements OnInit {
   logValidationErrors(group: FormGroup = this.candidateForm): void {
     Object.keys(group.controls).forEach((key: string) => {
       const abstractControl = group.get(key);
-
       this.formErrors[key] = '';
       if (abstractControl && !abstractControl.valid && (abstractControl.touched || abstractControl.dirty)) {
         const messages = this.validationMessages[key];
@@ -200,7 +182,6 @@ export class RegistrationFormComponent implements OnInit {
         for (const errorkey in abstractControl.errors) {
           if (errorkey) {
             this.formErrors[key] += messages[errorkey] + ' ';
-
           }
         }
       }
@@ -249,7 +230,7 @@ export class RegistrationFormComponent implements OnInit {
     })
   }
 
-
+ /** checking unique username.. */
   onUsernameChanged() {
     this._services.checkUsername({ "username": this.candidateForm.value.username }).subscribe((res: any) => {
 

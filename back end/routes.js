@@ -19,6 +19,7 @@ router.post('/jobportal/username/', username); //for username validation
 router.post('/jobportal/emailsender/', persons.emailSender); //for sending mail
 router.post('/jobportal/updatePassword/', persons.updatePassword);//for update password
 router.post('/jobportal/uploadPiture/', persons.uploadPiture);
+router.post('/jobportal/delete/', persons.deleteOne);
 //router.get('/loginSession/', loginSession);
 router.get('/jobportal/getCandidateData/:username', getCandidateData);
 

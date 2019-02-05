@@ -12,7 +12,7 @@ var demo;
 
 var persons = {
 
- 
+
 
 
   show: function (req, res) {
@@ -49,23 +49,36 @@ var persons = {
       }
       else {
         res.status(200).json({ status: false, message: 'Added to Mongo successfully', doc: '' });
-        console.log('saved succesfully') 
+        console.log('saved succesfully')
         this.demo = null;
       }
     });
   },
 
-  getOne: function(req,res) {
 
-    productModel.findById(req.params.email, function(err, doc){
-      if(err) {
-        res.status(500).json({status:'error', message: 'Datebase Error:' + err , doc:''});
+  getOne: function (req, res) {
+
+    personModel.findById(req.params.email, function (err, doc) {
+      if (err) {
+        res.status(500).json({ status: 'error', message: 'Datebase Error:' + err, doc: '' });
       }
       else {
-        res.status(200).json({status:'success', message: 'Success',docs:doc});
+        res.status(200).json({ status: 'success', message: 'Success', docs: doc });
       }
     });
-},
+  },
+
+  deleteOne: function (req, res) {
+
+    personModel.deleteOne(req.params.email, function (err, doc) {
+      if (err) {
+        res.status(500).json({ status: 'error', message: 'Datebase Error:' + err,});
+      }
+      else {
+        res.status(200).json({ status: 'success', message: 'deleted' });
+      }
+    });
+  },
 
   //function to send email for password reset
   emailSender: function (req, res) {
@@ -147,10 +160,10 @@ var persons = {
   }
 }
 
-getHobbies = function (hobbiesData){
-  result = hobbiesData.filter(word => word !== true) 
+getHobbies = function (hobbiesData) {
+  result = hobbiesData.filter(word => word !== true)
   hobbiesArray = result.filter(word => word !== false)
-  
+
   return hobbiesArray;
 }
 module.exports = persons;

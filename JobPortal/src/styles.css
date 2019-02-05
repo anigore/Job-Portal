@@ -50,7 +50,7 @@
 .form-control:active{
      background-attachment: fixed;
 
-    border-bottom: 2px solid #a1e622;
+    border-bottom: 2px solid #b8ee55;
 }
 
 .row
@@ -109,20 +109,21 @@ body
 .main-nav li a:link,
 .main-nav li a:visited
 {
-    color: #fff;
+    color: rgb(185, 183, 183);
     padding: 8px 0;
     text-decoration: none;
     text-transform: uppercase;
     font-size:  90%;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom 0.2s;     
+    transition: color 0.5s;
+    transition: font-size 0.5s;        
 }
 
 .main-nav li a:hover,
 .main-nav li a:active{
      background-attachment: fixed;
-
-    border-bottom: 2px solid #a1e622;
+     color: #fafafa;
+     font-size: 16px;
+    /* border-bottom: 2px solid #a1e622; */
 }
 
 /*----------------------------------------------------------------------*/
@@ -180,6 +181,7 @@ input[type=submit]
     border: 1px solid #9ecf17;
     color: rgb(48, 51, 42);
 }
+
 
 
 
